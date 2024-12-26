@@ -16,7 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} px-8 py-4`}>{children}</body>
+      <body className={`${inter.className} flex h-screen flex-col px-8 py-4`}>
+        {children}
+      </body>
     </html>
   );
 }
