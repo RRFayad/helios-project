@@ -46,10 +46,10 @@ function Chart() {
         predictedWapr: itemDate > today ? item.wapr : null, // Weighted Avg Percentual Risk
         last: item.last,
         priceRangeMin: item.last
-          ? item.last * Math.random() * (1 - 0.8) + 0.8 // As we mentioned in interview, I could generate this data
+          ? (item.last * (Math.random() * (1 - 0.8) + 0.8)).toFixed(0) // As we mentioned in interview, I could generate this data
           : null,
         priceRangeMax: item.last
-          ? item.last * Math.random() * (1 - 0.8) + 1 // As we mentioned in interview, I could generate this data
+          ? (item.last * (Math.random() * (1 - 0.8) + 1)).toFixed(0) // As we mentioned in interview, I could generate this data
           : null,
         month: format(itemDate, "MMM"),
       };
@@ -60,17 +60,17 @@ function Chart() {
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart width={500} height={300} data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis
-          dataKey="date_on"
-          fontSize={12}
-          tickFormatter={(value) => format(value, "MMM")}
-          interval={30}
-          minTickGap={10}
-          //   includeHidden
-          //   allowDuplicatedCategory={false}
-        />
+      <ComposedChart
+        width={500}
+        height={301}
+        data={data}
+        margin={{
+          top: 20,
+          right: 20,
+          bottom: 20,
+          left: 20,
+        }}
+      >
         <YAxis
           yAxisId="left"
           fontSize={12}
@@ -82,20 +82,48 @@ function Chart() {
           fontSize={12}
           tickFormatter={(value) => `${value}%`}
         />
-        <Tooltip />
-        <Legend />
+        <Tooltip contentStyle={{ fontSize: 12 }} />
+        <Area
+          yAxisId="left"
+          type="monotone"
+          dataKey="priceRangeMax"
+          name="Daily High Price"
+          stackId="0"
+          stroke="none"
+          fill="#FBF0DA"
+          fillOpacity={1}
+          legendType="none"
+        />
+        <Area
+          yAxisId="left"
+          type="monotone"
+          dataKey="priceRangeMin"
+          name="Daily Low Price"
+          stackId="1"
+          stroke="none"
+          fill="#FFF"
+          fillOpacity={1}
+          legendType="none"
+        />
+        <CartesianGrid opacity={0.4} />
+        <XAxis
+          dataKey="date_on"
+          fontSize={12}
+          tickFormatter={(value) => format(value, "MMM")}
+          interval={30}
+          minTickGap={10}
+        />
         <Line
           yAxisId="left"
           type="monotone"
           dataKey="last"
+          name="Closing Price"
           stroke="#B66202"
           dot={false}
           connectNulls={true}
           legendType="none"
-          name="price"
           strokeWidth={2}
         />
-        {/* <Area type="monotone" fill="#8884d8" stroke="#8884d8" /> */}
         <Line
           yAxisId="right"
           type="monotone"
@@ -117,7 +145,7 @@ function Chart() {
           strokeWidth={2}
           strokeDasharray={"4"}
         />
-      </LineChart>
+      </ComposedChart>
     </ResponsiveContainer>
   );
 }
