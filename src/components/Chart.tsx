@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import DUMMY_DATA from "@/lib/data.json";
 import { format, parseISO, startOfToday } from "date-fns";
 import {
@@ -14,13 +14,17 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { prepareDataForChart } from "@/lib/utils";
+import ChartContext, { ChartContextInterface } from "@/context/chart-context";
 
 const DUMMY_START_DATE = new Date("2024-01-01");
 const DUMMY_END_DATE = new Date("2024-12-31");
 
 function Chart() {
-  const startDate = DUMMY_START_DATE;
-  const endDate = DUMMY_END_DATE;
+  // const startDate = displayOptions.startDate;
+  // const endDate = displayOptions.endDate;
+  const { endDate, startDate, showClimateRisk, showPriceRange } = useContext(
+    ChartContext,
+  ) as ChartContextInterface;
 
   const data = prepareDataForChart(DUMMY_DATA, startDate, endDate);
 
@@ -49,44 +53,50 @@ function Chart() {
           tickFormatter={(value) => `${value}%`}
         />
         <Tooltip contentStyle={{ fontSize: 14 }} />
-        <Area
-          yAxisId="left"
-          type="monotone"
-          dataKey="priceRangeMax"
-          name="Daily High"
-          stackId="0"
-          stroke="none"
-          fill="#F9E3B6"
-          fillOpacity={1}
-          legendType="none"
-          unit={" USD"}
-        />
+        {showPriceRange && (
+          <Area
+            yAxisId="left"
+            type="monotone"
+            dataKey="priceRangeMax"
+            name="Daily High"
+            stackId="0"
+            stroke="none"
+            fill="#F9E3B6"
+            fillOpacity={1}
+            legendType="none"
+            unit={" USD"}
+          />
+        )}
         {/*White Area to Cover the Min (didn't figure out how to show in the Tooltip with different color)*/}
-        <Area
-          yAxisId="left"
-          tooltipType="none"
-          type="monotone"
-          dataKey="priceRangeMin"
-          name="Daily Low"
-          stackId="1"
-          stroke="none"
-          fill="#FFF"
-          fillOpacity={1}
-          legendType="none"
-          unit={" USD"}
-        />
+        {showPriceRange && (
+          <Area
+            yAxisId="left"
+            tooltipType="none"
+            type="monotone"
+            dataKey="priceRangeMin"
+            name="Daily Low"
+            stackId="1"
+            stroke="none"
+            fill="#FFF"
+            fillOpacity={1}
+            legendType="none"
+            unit={" USD"}
+          />
+        )}
         {/*Done only for Tooltip Purposes*/}
-        <Area
-          yAxisId="left"
-          dataKey="priceRangeMin"
-          name="Daily Low"
-          stackId="2"
-          stroke="none"
-          fill="#F9E3B6"
-          fillOpacity={0}
-          legendType="none"
-          unit={" USD"}
-        />
+        {showPriceRange && (
+          <Area
+            yAxisId="left"
+            dataKey="priceRangeMin"
+            name="Daily Low"
+            stackId="2"
+            stroke="none"
+            fill="#F9E3B6"
+            fillOpacity={0}
+            legendType="none"
+            unit={" USD"}
+          />
+        )}
         <CartesianGrid opacity={0.4} />
         <XAxis
           dataKey="date_on"
@@ -107,31 +117,35 @@ function Chart() {
           strokeWidth={2}
           unit={" USD"}
         />
-        <Line
-          yAxisId="right"
-          type="monotone"
-          dataKey="wapr"
-          name="Climate Risk"
-          unit={"%"}
-          stroke="#376BFA"
-          dot={false}
-          connectNulls={true}
-          legendType="none"
-          strokeWidth={2}
-        />
-        <Line
-          yAxisId="right"
-          type="monotone"
-          dataKey="predictedWapr"
-          name="Predicted Climate Risk"
-          unit={"%"}
-          stroke="#376BFA"
-          dot={false}
-          connectNulls={true}
-          legendType="none"
-          strokeWidth={2}
-          strokeDasharray={"4"}
-        />
+        {showClimateRisk && (
+          <Line
+            yAxisId="right"
+            type="monotone"
+            dataKey="wapr"
+            name="Climate Risk"
+            unit={"%"}
+            stroke="#376BFA"
+            dot={false}
+            connectNulls={true}
+            legendType="none"
+            strokeWidth={2}
+          />
+        )}
+        {showClimateRisk && (
+          <Line
+            yAxisId="right"
+            type="monotone"
+            dataKey="predictedWapr"
+            name="Predicted Climate Risk"
+            unit={"%"}
+            stroke="#376BFA"
+            dot={false}
+            connectNulls={true}
+            legendType="none"
+            strokeWidth={2}
+            strokeDasharray={"4"}
+          />
+        )}
       </ComposedChart>
     </ResponsiveContainer>
   );

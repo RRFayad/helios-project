@@ -1,3 +1,4 @@
+import { ChartContextProvider } from "@/context/chart-context";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -17,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} flex h-screen flex-col px-8 py-4`}>
-        {children}
+        <ChartContextProvider>{children}</ChartContextProvider>
       </body>
     </html>
   );

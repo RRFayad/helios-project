@@ -1,3 +1,5 @@
+"use client";
+
 import Chart from "@/components/Chart";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
@@ -9,7 +11,7 @@ export default function Home() {
       <Header />
       <main className="h-full">
         {/* <TimeSelector /> */}
-        <div className="grid grid-cols-[3fr_1fr] gap-x-10">
+        <div className="grid grid-cols-[5fr_1fr] gap-x-10">
           <div className="flex w-full flex-row items-center justify-center">
             <div className="text-xs font-semibold [-webkit-transform:rotate(180deg)] [writing-mode:vertical-lr]">
               Weighted Avg price per kg
@@ -18,7 +20,6 @@ export default function Home() {
               <div className="h-[301px] w-full">
                 <Chart />
               </div>
-              <div className="text-xs font-semibold">Month</div>
             </div>
             <div className="text-xs font-semibold [-webkit-transform:rotate(180deg)] [writing-mode:vertical-lr]">
               Weighted Avg % Risk (WA%R)
