@@ -16,21 +16,23 @@ function Sidebar() {
       </div>
       <div className="mt-4">
         <h3 className="mb-2">Legend</h3>
-        <div className="mt-1 flex items-center justify-start gap-x-2">
-          <button className="bg-project-blue h-4 w-4" />
-          <span>Climate risk</span>
-        </div>
-        <div className="mt-1 flex items-center justify-start gap-x-2">
-          <button className="bg-project-brown h-4 w-4" />
-          <span>Average Price</span>
-        </div>
-        <div className="mt-1 flex items-center justify-start gap-x-2">
-          <button className="h-4 w-4 bg-red-600" />
-          <span>Forecasted Climate Risk</span>
-        </div>
-        <div className="mt-1 flex items-center justify-start gap-x-2">
-          <button className="bg-project-yellow h-4 w-4" />
-          <span>Price Range (Max & Min)</span>
+        <div className="flex flex-col items-start justify-center gap-y-[16px]">
+          <div className="flex items-center gap-x-1">
+            <button className="bg-project-blue h-4 w-4" />
+            <span>Climate risk</span>
+          </div>
+          <div className="flex items-center gap-x-1">
+            <button className="bg-project-brown h-4 w-4" />
+            <span>Average Price</span>
+          </div>
+          <div className="flex items-center gap-x-1">
+            <button className="h-4 w-4 bg-red-600" />
+            <span>Forecasted Climate Risk</span>
+          </div>
+          <div className="flex items-center gap-x-1">
+            <button className="bg-project-yellow h-4 w-4" />
+            <span>Price Range (Max & Min)</span>
+          </div>
         </div>
       </div>
     </div>
