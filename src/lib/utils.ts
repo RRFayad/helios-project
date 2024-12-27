@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { clsx, type ClassValue } from "clsx";
-import { CommodityData } from "@/types/data";
 import { format, parseISO, startOfToday } from "date-fns";
+import { CommodityData, PreparedDataForChart } from "@/types/data";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -11,7 +11,7 @@ export function prepareDataForChart(
   data: CommodityData[],
   startDate: Date,
   endDate: Date,
-) {
+): PreparedDataForChart[] {
   // const today = startOfToday();
   const today = new Date("2024-06-06"); // For Testing Purposes
 

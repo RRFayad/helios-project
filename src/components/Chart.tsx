@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DUMMY_DATA from "@/lib/data.json";
 import { format, parseISO, startOfToday } from "date-fns";
 import {
@@ -15,18 +15,18 @@ import {
 } from "recharts";
 import { prepareDataForChart } from "@/lib/utils";
 import ChartContext, { ChartContextInterface } from "@/context/chart-context";
-
-const DUMMY_START_DATE = new Date("2024-01-01");
-const DUMMY_END_DATE = new Date("2024-12-31");
+import { PreparedDataForChart } from "@/types/data";
 
 function Chart() {
-  // const startDate = displayOptions.startDate;
-  // const endDate = displayOptions.endDate;
+  const [data, setData] = useState<PreparedDataForChart[]>([]);
+
   const { endDate, startDate, showClimateRisk, showPriceRange } = useContext(
     ChartContext,
   ) as ChartContextInterface;
 
-  const data = prepareDataForChart(DUMMY_DATA, startDate, endDate);
+  useEffect(() => {
+    setData(prepareDataForChart(DUMMY_DATA, startDate, endDate));
+  }, [endDate, startDate, showClimateRisk, showPriceRange]);
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -133,6 +133,7 @@ function Chart() {
         )}
         {showClimateRisk && (
           <Line
+            strokeDasharray={"4"}
             yAxisId="right"
             type="monotone"
             dataKey="predictedWapr"
@@ -143,7 +144,6 @@ function Chart() {
             connectNulls={true}
             legendType="none"
             strokeWidth={2}
-            strokeDasharray={"4"}
           />
         )}
       </ComposedChart>
