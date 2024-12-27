@@ -5,24 +5,15 @@ import DUMMY_DATA from "@/lib/data.json";
 import { format, parseISO, startOfToday } from "date-fns";
 import {
   ComposedChart,
-  LineChart,
   Area,
   Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
-
-interface CommodityData {
-  commodity: string;
-  date_on: Date;
-  wapr: number;
-  last: number | null;
-  season_status: string;
-}
+import { prepareDataForChart } from "@/lib/utils";
 
 const DUMMY_START_DATE = new Date("2024-01-01");
 const DUMMY_END_DATE = new Date("2024-12-31");
@@ -30,33 +21,8 @@ const DUMMY_END_DATE = new Date("2024-12-31");
 function Chart() {
   const startDate = DUMMY_START_DATE;
   const endDate = DUMMY_END_DATE;
-  //   const today = startOfToday();
-  const today = new Date("2024-06-06");
 
-  const data = [];
-
-  for (const item of DUMMY_DATA) {
-    const itemDate = parseISO(item.date_on);
-
-    if (itemDate >= startDate && itemDate <= endDate) {
-      const updatedItem = {
-        commodity: item.commodity,
-        date_on: format(itemDate, "yy-MMM-dd"),
-        wapr: itemDate <= today ? item.wapr : null,
-        predictedWapr: itemDate > today ? item.wapr : null, // Weighted Avg Percentual Risk
-        last: item.last,
-        priceRangeMin: item.last
-          ? (item.last * (Math.random() * (1 - 0.8) + 0.8)).toFixed(0) // As we mentioned in interview, I could generate this data
-          : null,
-        priceRangeMax: item.last
-          ? (item.last * (Math.random() * (1 - 0.8) + 1)).toFixed(0) // As we mentioned in interview, I could generate this data
-          : null,
-        month: format(itemDate, "MMM"),
-      };
-
-      data.push(updatedItem);
-    }
-  }
+  const data = prepareDataForChart(DUMMY_DATA, startDate, endDate);
 
   return (
     <ResponsiveContainer width="100%" height="100%">
