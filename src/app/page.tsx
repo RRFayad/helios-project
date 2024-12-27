@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <Header />
       <main className="h-full">
-        {/* <TimeSelector /> */}
+        <TimeSelector />
         <div className="grid grid-cols-[5fr_1fr] gap-x-10">
           <div className="flex w-full flex-row items-center justify-center">
             <div className="text-xs font-semibold [-webkit-transform:rotate(180deg)] [writing-mode:vertical-lr]">
