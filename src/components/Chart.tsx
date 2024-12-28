@@ -75,8 +75,8 @@ function Chart() {
             name="Daily High"
             stackId="0"
             stroke="none"
-            fill="#F9E3B6"
-            fillOpacity={1}
+            fill="#E59828"
+            fillOpacity={0.25}
             legendType="none"
             unit={" USD"}
             connectNulls
@@ -107,7 +107,7 @@ function Chart() {
             name="Daily Low"
             stackId="2"
             stroke="none"
-            fill="#F9E3B6"
+            fill="#E59828"
             fillOpacity={0}
             legendType="none"
             connectNulls={true}
