@@ -21,7 +21,7 @@ const DualRangeSlider = React.forwardRef<
 
   return (
     <div
-      className={`flex flex-col items-center justify-center ${className} mx-auto`}
+      className={`flex flex-col items-center justify-center pt-6 ${className} mx-auto`}
     >
       <SliderPrimitive.Root
         ref={ref}
