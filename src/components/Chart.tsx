@@ -46,7 +46,7 @@ function Chart() {
     <ResponsiveContainer width="100%" height="100%">
       <ComposedChart
         width={500}
-        height={301}
+        height={500}
         data={data}
         margin={{
           top: 20,

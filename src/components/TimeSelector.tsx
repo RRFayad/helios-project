@@ -46,7 +46,7 @@ function TimeSelector() {
   }, [monthsRangeState]);
 
   return (
-    <div className="mb-2 grid h-[72px] grid-cols-[10fr_3fr] gap-x-20">
+    <div className="mb-2 grid h-[72px] gap-x-20 lg:grid-cols-[10fr_3fr]">
       <DualRangeSlider
         value={[monthsRangeState.initial, monthsRangeState.final]}
         onValueChange={(newValues) =>
@@ -55,10 +55,10 @@ function TimeSelector() {
         min={0}
         max={11}
         step={1}
-        className="ml-10 w-full"
+        className="mx-auto w-[90%] lg:mx-0 lg:ml-10 lg:w-full"
       />
 
-      <div className="flex w-full flex-row items-center justify-center space-x-4">
+      <div className="hidden w-full flex-row items-center justify-center space-x-4 lg:flex">
         <div className="flex w-full flex-col pt-2">
           <Select
             onValueChange={(value) =>
