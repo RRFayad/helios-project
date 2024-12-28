@@ -35,13 +35,9 @@ function Chart() {
       }
     };
 
-    // Debounce to avoid many requests when using the slider
-    const newTimeoutId = setTimeout(() => {
-      fetchCocoaData();
-    }, 800);
+    fetchCocoaData();
 
     return () => {
-      clearTimeout(newTimeoutId);
       controller.abort();
     };
   }, [endDate, startDate, showClimateRisk, showPriceRange]);

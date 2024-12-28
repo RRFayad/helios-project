@@ -1,6 +1,7 @@
 export interface TimeSelectorState {
   initial: number;
   final: number;
+  lastUpdatedBy?: "slider" | "select";
 }
 
 export type TimeSelectorAction =

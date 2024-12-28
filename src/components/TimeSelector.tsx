@@ -26,8 +26,23 @@ function TimeSelector() {
   });
 
   useEffect(() => {
-    setStartDate(new Date(2024, monthsRangeState.initial, 1));
-    setEndDate(new Date(2024, monthsRangeState.final + 1, 0));
+    const controller = new AbortController();
+
+    // Debounce to avoid many requests when using the slider
+    let timeoutId: NodeJS.Timeout;
+    if (monthsRangeState.lastUpdatedBy === "slider") {
+      timeoutId = setTimeout(() => {
+        setStartDate(new Date(2024, monthsRangeState.initial, 1));
+        setEndDate(new Date(2024, monthsRangeState.final + 1, 0));
+      }, 800);
+    } else {
+      setStartDate(new Date(2024, monthsRangeState.initial, 1));
+      setEndDate(new Date(2024, monthsRangeState.final + 1, 0));
+    }
+    return () => {
+      clearTimeout(timeoutId);
+      controller.abort();
+    };
   }, [monthsRangeState]);
 
   return (
