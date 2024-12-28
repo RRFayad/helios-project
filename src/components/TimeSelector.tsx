@@ -94,9 +94,10 @@ function TimeSelector() {
         </div>
         <div className="flex flex-col pt-2">
           <Select
-            onValueChange={(value) =>
-              dispatch({ type: "DEFINE_FINAL_MONTH", payload: Number(value) })
-            }
+            onValueChange={(value) => {
+              dispatch({ type: "DEFINE_FINAL_MONTH", payload: Number(value) });
+              console.log(value);
+            }}
           >
             <span className="text-[12px] leading-4 text-[#444444S]">
               End Date
@@ -108,7 +109,7 @@ function TimeSelector() {
               {Array.from({ length: 12 - monthsRangeState.initial }, (_, i) => (
                 <SelectItem
                   key={i + monthsRangeState.initial}
-                  value={i + monthsRangeState.initial.toString()}
+                  value={(i + monthsRangeState.initial).toString()}
                 >
                   {format(
                     new Date(2024, i + monthsRangeState.initial),
