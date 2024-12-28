@@ -13,7 +13,7 @@ export function prepareDataForChart(
   endDate: Date,
 ): PreparedDataForChart[] {
   // const today = startOfToday();
-  const today = new Date("2024-06-06"); // For Testing Purposes
+  const today = new Date("2024-12-13"); // For Testing Purposes
 
   const chartData = [];
 

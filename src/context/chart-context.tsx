@@ -12,8 +12,8 @@ export interface ChartContextInterface {
   toggleShowPriceRange: () => void;
 }
 
-const DUMMY_START_DATE = new Date("2024-01-01");
-const DUMMY_END_DATE = new Date("2024-12-31");
+const DUMMY_START_DATE = new Date(Date.UTC(2024, 0, 1));
+const DUMMY_END_DATE = new Date(Date.UTC(2024, 11, 31));
 
 const ChartContext = React.createContext<ChartContextInterface | null>(null);
 
