@@ -1,5 +1,4 @@
-"use client";
-
+import { getCocoaDataByPeriod } from "@/actions";
 import Chart from "@/components/Chart";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";

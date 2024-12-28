@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-import DUMMY_DATA from "@/lib/data.json";
 import { format, parseISO, startOfToday } from "date-fns";
 import {
   ComposedChart,
@@ -13,9 +12,9 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { prepareDataForChart } from "@/lib/utils";
 import ChartContext, { ChartContextInterface } from "@/context/chart-context";
 import { PreparedDataForChart } from "@/types/data";
+import { getCocoaDataByPeriod } from "@/actions";
 
 function Chart() {
   const [data, setData] = useState<PreparedDataForChart[]>([]);
@@ -25,7 +24,26 @@ function Chart() {
   ) as ChartContextInterface;
 
   useEffect(() => {
-    setData(prepareDataForChart(DUMMY_DATA, startDate, endDate));
+    const controller = new AbortController();
+
+    const fetchCocoaData = async () => {
+      try {
+        const cocoaData = await getCocoaDataByPeriod(startDate, endDate);
+        setData(cocoaData);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    // Debounce to avoid many requests when using the slider
+    const newTimeoutId = setTimeout(() => {
+      fetchCocoaData();
+    }, 800);
+
+    return () => {
+      clearTimeout(newTimeoutId);
+      controller.abort();
+    };
   }, [endDate, startDate, showClimateRisk, showPriceRange]);
 
   return (
@@ -65,6 +83,7 @@ function Chart() {
             fillOpacity={1}
             legendType="none"
             unit={" USD"}
+            connectNulls
           />
         )}
         {/*White Area to Cover the Min (didn't figure out how to show in the Tooltip with different color)*/}
@@ -81,6 +100,7 @@ function Chart() {
             fillOpacity={1}
             legendType="none"
             unit={" USD"}
+            connectNulls
           />
         )}
         {/*Done only for Tooltip Purposes*/}
@@ -94,6 +114,7 @@ function Chart() {
             fill="#F9E3B6"
             fillOpacity={0}
             legendType="none"
+            connectNulls={true}
             unit={" USD"}
           />
         )}

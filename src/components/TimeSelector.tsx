@@ -1,6 +1,12 @@
-import { useContext, useEffect, useReducer, useState } from "react";
+"use client";
 import { DualRangeSlider } from "./ui/dual-range-slider";
+import { useContext, useEffect, useReducer } from "react";
+import ChartContext, { ChartContextInterface } from "@/context/chart-context";
 
+import {
+  convertMonthNumberToContent,
+  timeSelectorMonthReducer,
+} from "@/lib/utils";
 import {
   Select,
   SelectContent,
@@ -8,12 +14,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { format, getMonth, getYear } from "date-fns";
-import ChartContext, { ChartContextInterface } from "@/context/chart-context";
-import {
-  convertMonthNumberToContent,
-  timeSelectorMonthReducer,
-} from "@/lib/utils";
 
 function TimeSelector() {
   const { setEndDate, setStartDate } = useContext(
