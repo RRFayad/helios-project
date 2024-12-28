@@ -1,4 +1,4 @@
-import { useContext, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import { DualRangeSlider } from "./ui/dual-range-slider";
 
 import {
@@ -16,7 +16,7 @@ import {
 } from "@/lib/utils";
 
 function TimeSelector() {
-  const { endDate, setEndDate, startDate, setStartDate } = useContext(
+  const { setEndDate, setStartDate } = useContext(
     ChartContext,
   ) as ChartContextInterface;
 
@@ -24,6 +24,11 @@ function TimeSelector() {
     initial: 0,
     final: 11,
   });
+
+  useEffect(() => {
+    setStartDate(new Date(2024, monthsRangeState.initial, 1));
+    setEndDate(new Date(2024, monthsRangeState.final + 1, 0));
+  }, [monthsRangeState]);
 
   return (
     <div className="mb-2 grid h-[72px] grid-cols-[10fr_3fr] gap-x-20">
@@ -70,7 +75,6 @@ function TimeSelector() {
           <Select
             onValueChange={(value) => {
               dispatch({ type: "SET_FINAL_MONTH", payload: Number(value) });
-              console.log(value);
             }}
           >
             <span className="text-[12px] leading-4 text-[#444444S]">

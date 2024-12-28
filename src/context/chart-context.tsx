@@ -12,9 +12,6 @@ export interface ChartContextInterface {
   toggleShowPriceRange: () => void;
 }
 
-const DUMMY_START_DATE = new Date(Date.UTC(2024, 0, 1));
-const DUMMY_END_DATE = new Date(Date.UTC(2024, 11, 31));
-
 const ChartContext = React.createContext<ChartContextInterface | null>(null);
 
 export const ChartContextProvider = ({
@@ -22,10 +19,13 @@ export const ChartContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [startDate, setStartDate] = useState(DUMMY_START_DATE);
-  const [endDate, setEndDate] = useState(DUMMY_END_DATE);
+  const [startDate, setStartDate] = useState(new Date(2024, 0, 1));
+  const [endDate, setEndDate] = useState(new Date(2024, 11, 31));
   const [showClimateRisk, setShowClimateRisk] = useState(true);
   const [showPriceRange, setShowPriceRange] = useState(true);
+
+  // console.log("CONTEXT", new Date(startDate));
+  // console.log("CONTEXT", new Date(endDate));
 
   const toggleShowClimateRisk = () => {
     setShowClimateRisk((prevState) => !prevState);
