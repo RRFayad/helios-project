@@ -14,7 +14,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { DatePickerForm } from "./date-picker-form";
+import DatePickerByDay from "./DatePickerByDay";
+import MonthSelector from "./MonthSelector";
 
 function TimeSelector() {
   const { setEndDate, setStartDate } = useContext(
@@ -58,66 +59,8 @@ function TimeSelector() {
         step={1}
         className="mx-auto w-[90%] lg:mx-0 lg:ml-10 lg:w-full"
       />
-
-      <div className="hidden w-full flex-row items-center justify-center space-x-4 lg:flex">
-        <div className="flex w-full flex-col pt-2">
-          <Select
-            onValueChange={(value) =>
-              dispatch({ type: "SET_INITIAL_MONTH", payload: Number(value) })
-            }
-          >
-            <span className="text-[12px] leading-4 text-[#444444S]">
-              Start Date
-            </span>
-            <SelectTrigger className="mt-1 flex h-[32px] w-full max-w-[179px] items-center justify-between rounded-md border border-[#C9C9C9] bg-[#F3F3F3] px-3 py-2 text-sm shadow-sm lg:w-[179px]">
-              <SelectValue
-                placeholder={convertMonthNumberToContent(
-                  monthsRangeState.initial,
-                )}
-              >
-                {convertMonthNumberToContent(monthsRangeState.initial)}
-              </SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              {Array.from({ length: 12 }, (_, i) => (
-                <SelectItem key={i} value={i.toString()}>
-                  {convertMonthNumberToContent(i)}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="flex w-full flex-col pt-2">
-          <Select
-            onValueChange={(value) => {
-              dispatch({ type: "SET_FINAL_MONTH", payload: Number(value) });
-            }}
-          >
-            <span className="text-[12px] leading-4 text-[#444444S]">
-              End Date
-            </span>
-            <SelectTrigger className="mt-1 flex h-[32px] w-full max-w-[179px] items-center justify-between rounded-md border border-[#C9C9C9] bg-[#F3F3F3] px-3 py-2 text-sm shadow-sm lg:w-[179px]">
-              <SelectValue
-                placeholder={convertMonthNumberToContent(
-                  monthsRangeState.final,
-                )}
-              >
-                {convertMonthNumberToContent(monthsRangeState.final)}
-              </SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              {Array.from({ length: 12 - monthsRangeState.initial }, (_, i) => (
-                <SelectItem
-                  key={i + monthsRangeState.initial}
-                  value={(i + monthsRangeState.initial).toString()}
-                >
-                  {convertMonthNumberToContent(i + monthsRangeState.initial)}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
+      {/* <DatePickerByDay /> */}
+      <MonthSelector monthsRangeState={monthsRangeState} dispatch={dispatch} />
     </div>
   );
 }
