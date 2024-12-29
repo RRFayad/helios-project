@@ -14,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { DatePickerForm } from "./date-picker-form";
 
 function TimeSelector() {
   const { setEndDate, setStartDate } = useContext(
@@ -68,7 +69,7 @@ function TimeSelector() {
             <span className="text-[12px] leading-4 text-[#444444S]">
               Start Date
             </span>
-            <SelectTrigger className="mt-1 flex h-[32px] w-full max-w-[179px] items-center justify-between rounded-md border border-[#C9C9C9] bg-[#F3F3F3] px-3 py-2 text-sm shadow-sm">
+            <SelectTrigger className="mt-1 flex h-[32px] w-full max-w-[179px] items-center justify-between rounded-md border border-[#C9C9C9] bg-[#F3F3F3] px-3 py-2 text-sm shadow-sm lg:w-[179px]">
               <SelectValue
                 placeholder={convertMonthNumberToContent(
                   monthsRangeState.initial,
@@ -95,7 +96,7 @@ function TimeSelector() {
             <span className="text-[12px] leading-4 text-[#444444S]">
               End Date
             </span>
-            <SelectTrigger className="mt-1 flex h-[32px] w-full max-w-[179px] items-center justify-between rounded-md border border-[#C9C9C9] bg-[#F3F3F3] px-3 py-2 text-sm shadow-sm">
+            <SelectTrigger className="mt-1 flex h-[32px] w-full max-w-[179px] items-center justify-between rounded-md border border-[#C9C9C9] bg-[#F3F3F3] px-3 py-2 text-sm shadow-sm lg:w-[179px]">
               <SelectValue
                 placeholder={convertMonthNumberToContent(
                   monthsRangeState.final,
