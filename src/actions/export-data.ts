@@ -2,7 +2,7 @@
 
 import DUMMY_DATA from "@/lib/data.json";
 import { CommodityData } from "@/types/data";
-import { getDate, getMonth, getYear, startOfDay } from "date-fns";
+import { getDate, getMonth, getYear } from "date-fns";
 
 export const exportDataToCSVByPeriod = async (
   startDate: Date,

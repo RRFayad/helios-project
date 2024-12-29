@@ -16,7 +16,7 @@ function InfoTooltip() {
         </TooltipTrigger>
         <TooltipContent>
           <p>
-            To make this data possible and accurate, Helios's artificial
+            To make this data possible and accurate, Helios&apos;s artificial
             <br />
             intelligence analyzes data from over 150 countries and more than
             <br />

@@ -51,7 +51,7 @@ function ExportDataBtn() {
     return () => {
       controller.abort();
     };
-  }, [startDownload]);
+  }, [startDownload, endDate, startDate]);
 
   return (
     <TooltipProvider>
