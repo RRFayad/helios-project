@@ -2,6 +2,7 @@
 
 import DUMMY_DATA from "@/lib/data.json";
 import { CommodityData } from "@/types/data";
+import { getDate, getMonth, getYear, startOfDay } from "date-fns";
 
 export const exportDataToCSVByPeriod = async (
   startDate: Date,
@@ -13,9 +14,14 @@ export const exportDataToCSVByPeriod = async (
     }, 500);
   });
 
+  const normalizedStartDate = new Date(
+    Date.UTC(getYear(startDate), getMonth(startDate), getDate(startDate)),
+  );
+
   const updatedData = data.filter(
     (item) =>
-      new Date(item.date_on) >= startDate && new Date(item.date_on) <= endDate,
+      new Date(item.date_on) >= normalizedStartDate &&
+      new Date(item.date_on) <= endDate,
   );
 
   const headers = Object.keys(updatedData[0]).join(",");
