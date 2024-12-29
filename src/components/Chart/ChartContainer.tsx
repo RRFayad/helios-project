@@ -1,5 +1,5 @@
 import Chart from "./Chart";
-import Sidebar from "./Sidebar";
+import Sidebar from "@/components/Chart/Sidebar/Sidebar";
 
 function ChartContainer() {
   return (

@@ -1,9 +1,9 @@
 "use client";
 
-import DatePickerByDay from "./DatePickerByDay";
 import { timeSelectorMonthReducer } from "@/lib/utils";
-import { DualRangeSlider } from "./ui/dual-range-slider";
+import { DualRangeSlider } from "../ui/dual-range-slider";
 import { useContext, useEffect, useReducer } from "react";
+import DatePickerByDay from "@/components/TimeSelector/DatePickerByDay";
 import ChartContext, { ChartContextInterface } from "@/context/chart-context";
 
 function TimeSelector() {

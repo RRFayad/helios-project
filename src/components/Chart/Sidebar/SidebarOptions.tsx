@@ -1,6 +1,6 @@
 "use client";
 import { useContext } from "react";
-import { Checkbox } from "./ui/checkbox";
+import { Checkbox } from "../../ui/checkbox";
 import ChartContext, { ChartContextInterface } from "@/context/chart-context";
 
 function SidebarOptions() {

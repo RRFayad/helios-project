@@ -1,6 +1,6 @@
-import Header from "@/components/Header";
-import ChartContainer from "@/components/ChartContainer";
-import TimeSelector from "@/components/TimeSelector";
+import Header from "@/components/Header/Header";
+import ChartContainer from "@/components/Chart/ChartContainer";
+import TimeSelector from "@/components/TimeSelector/TimeSelector";
 
 export default function Home() {
   return (

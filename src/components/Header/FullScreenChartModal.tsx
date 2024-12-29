@@ -1,9 +1,9 @@
 "use client";
-import Chart from "./Chart";
+import Chart from "@/components/Chart/Chart";
 import { format } from "date-fns";
 import { useContext } from "react";
 import { Maximize2 } from "lucide-react";
-import SidebarChartLegend from "./SidebarChartLegend";
+import SidebarChartLegend from "../Chart/Sidebar/SidebarChartLegend";
 import ChartContext, { ChartContextInterface } from "@/context/chart-context";
 
 import {
