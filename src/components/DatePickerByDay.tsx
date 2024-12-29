@@ -66,6 +66,7 @@ function DatePickerByDay({ dispatch, monthsRangeState }: MonthSelectorProps) {
               captionLayout="dropdown-buttons"
               fromDate={new Date(2024, 0, 1)}
               toDate={endDate}
+              defaultMonth={startDate}
             />
           </PopoverContent>
         </Popover>
@@ -89,6 +90,7 @@ function DatePickerByDay({ dispatch, monthsRangeState }: MonthSelectorProps) {
               captionLayout="dropdown-buttons"
               fromDate={startDate}
               toDate={new Date(2024, 11, 31)}
+              defaultMonth={endDate}
             />
           </PopoverContent>
         </Popover>
