@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import { ChevronDown } from "lucide-react";
 import { format, getMonth } from "date-fns";
-import { TimeSelectorAction, TimeSelectorState } from "@/types/time-selector";
+import { TimeSelectorAction } from "@/types/time-selector";
 import ChartContext, { ChartContextInterface } from "@/context/chart-context";
 
 import { Calendar } from "@/components/ui/calendar";
@@ -15,10 +15,9 @@ import {
 
 interface MonthSelectorProps {
   dispatch: (action: TimeSelectorAction) => void;
-  monthsRangeState: TimeSelectorState;
 }
 
-function DatePickerByDay({ dispatch, monthsRangeState }: MonthSelectorProps) {
+function DatePickerByDay({ dispatch }: MonthSelectorProps) {
   const { startDate, setStartDate, endDate, setEndDate } = useContext(
     ChartContext,
   ) as ChartContextInterface;

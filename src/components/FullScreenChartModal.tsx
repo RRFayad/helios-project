@@ -1,5 +1,10 @@
 "use client";
+import Chart from "./Chart";
+import { format } from "date-fns";
+import { useContext } from "react";
 import { Maximize2 } from "lucide-react";
+import SidebarChartLegend from "./SidebarChartLegend";
+import ChartContext, { ChartContextInterface } from "@/context/chart-context";
 
 import {
   Dialog,
@@ -9,11 +14,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import Chart from "./Chart";
-import { useContext } from "react";
-import ChartContext, { ChartContextInterface } from "@/context/chart-context";
-import { format } from "date-fns";
-import SidebarChartLegend from "./SidebarChartLegend";
 
 function FullScreenChartModal() {
   const { startDate, endDate } = useContext(
@@ -32,7 +32,7 @@ function FullScreenChartModal() {
           </DialogTitle>
           <Chart />
         </DialogHeader>
-        <DialogFooter className="flex">
+        <DialogFooter>
           <SidebarChartLegend fullScreenChartMode />
         </DialogFooter>
       </DialogContent>

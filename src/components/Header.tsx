@@ -1,21 +1,12 @@
-import { Info, Upload, Maximize2 } from "lucide-react";
+import { Info, Upload } from "lucide-react";
+import FullScreenChartModal from "./FullScreenChartModal";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import Chart from "./Chart";
-import FullScreenChartModal from "./FullScreenChartModal";
 
 function Header() {
   return (

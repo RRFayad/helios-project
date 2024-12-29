@@ -55,10 +55,7 @@ function TimeSelector() {
         step={1}
         className="mx-auto w-[90%] lg:mx-0 lg:ml-10 lg:w-full"
       />
-      <DatePickerByDay
-        monthsRangeState={monthsRangeToBeShown}
-        dispatch={dispatch}
-      />
+      <DatePickerByDay dispatch={dispatch} />
       {/* <MonthSelector
         monthsRangeState={monthsRangeToBeShown}
         dispatch={dispatch}
