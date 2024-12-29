@@ -1,5 +1,6 @@
 "use client";
 
+import MonthSelector from "./MonthSelector";
 import { timeSelectorMonthReducer } from "@/lib/utils";
 import { DualRangeSlider } from "../ui/dual-range-slider";
 import { useContext, useEffect, useReducer } from "react";
