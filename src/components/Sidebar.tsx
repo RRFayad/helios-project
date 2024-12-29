@@ -1,5 +1,5 @@
-import SidebarChartLegend from "./SidebarChartLegend";
 import SidebarOptions from "./SidebarOptions";
+import SidebarChartLegend from "./SidebarChartLegend";
 
 function Sidebar() {
   return (

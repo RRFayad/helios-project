@@ -24,9 +24,6 @@ export const ChartContextProvider = ({
   const [showClimateRisk, setShowClimateRisk] = useState(true);
   const [showPriceRange, setShowPriceRange] = useState(true);
 
-  // console.log("CONTEXT", new Date(startDate));
-  // console.log("CONTEXT", new Date(endDate));
-
   const toggleShowClimateRisk = () => {
     setShowClimateRisk((prevState) => !prevState);
   };

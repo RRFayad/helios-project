@@ -1,3 +1,6 @@
+import { convertMonthNumberToContent } from "@/lib/utils";
+import { TimeSelectorAction, TimeSelectorState } from "@/types/time-selector";
+
 import {
   Select,
   SelectContent,
@@ -5,8 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { convertMonthNumberToContent } from "@/lib/utils";
-import { TimeSelectorAction, TimeSelectorState } from "@/types/time-selector";
 
 interface MonthSelectorProps {
   dispatch: (action: TimeSelectorAction) => void;

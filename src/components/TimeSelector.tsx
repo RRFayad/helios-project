@@ -1,25 +1,13 @@
 "use client";
+
+import DatePickerByDay from "./DatePickerByDay";
+import { timeSelectorMonthReducer } from "@/lib/utils";
 import { DualRangeSlider } from "./ui/dual-range-slider";
 import { useContext, useEffect, useReducer } from "react";
 import ChartContext, { ChartContextInterface } from "@/context/chart-context";
 
-import {
-  convertMonthNumberToContent,
-  timeSelectorMonthReducer,
-} from "@/lib/utils";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import DatePickerByDay from "./DatePickerByDay";
-import MonthSelector from "./MonthSelector";
-import { getMonth } from "date-fns";
-
 function TimeSelector() {
-  const { startDate, endDate, setEndDate, setStartDate } = useContext(
+  const { setEndDate, setStartDate } = useContext(
     ChartContext,
   ) as ChartContextInterface;
 

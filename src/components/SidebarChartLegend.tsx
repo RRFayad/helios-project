@@ -1,5 +1,3 @@
-import { Checkbox } from "./ui/checkbox";
-
 function SidebarChartLegend() {
   return (
     <div className="flex w-full flex-col items-center gap-y-[8px] lg:items-start">

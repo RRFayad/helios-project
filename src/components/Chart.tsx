@@ -1,7 +1,11 @@
 "use client";
 
+import { format } from "date-fns";
+import { getCocoaDataByPeriod } from "@/actions";
+import { PreparedDataForChart } from "@/types/data";
 import React, { useContext, useEffect, useState } from "react";
-import { format, parseISO, startOfToday } from "date-fns";
+import ChartContext, { ChartContextInterface } from "@/context/chart-context";
+
 import {
   ComposedChart,
   Area,
@@ -12,9 +16,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import ChartContext, { ChartContextInterface } from "@/context/chart-context";
-import { PreparedDataForChart } from "@/types/data";
-import { getCocoaDataByPeriod } from "@/actions";
 
 function Chart() {
   const [data, setData] = useState<PreparedDataForChart[]>([]);

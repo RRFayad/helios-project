@@ -1,18 +1,17 @@
 "use client";
 
+import { useContext } from "react";
+import { ChevronDown } from "lucide-react";
 import { format, getMonth } from "date-fns";
-
-import { useState, useContext, useEffect } from "react";
+import { TimeSelectorAction, TimeSelectorState } from "@/types/time-selector";
 import ChartContext, { ChartContextInterface } from "@/context/chart-context";
 
-import { ChevronDown } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { TimeSelectorAction, TimeSelectorState } from "@/types/time-selector";
 
 interface MonthSelectorProps {
   dispatch: (action: TimeSelectorAction) => void;
