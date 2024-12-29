@@ -134,6 +134,7 @@ function Chart() {
           legendType="none"
           strokeWidth={2}
           unit={" USD"}
+          animateNewValues={false}
         />
         {showClimateRisk && (
           <Line
@@ -147,6 +148,7 @@ function Chart() {
             connectNulls={true}
             legendType="none"
             strokeWidth={2}
+            animateNewValues={false}
           />
         )}
         {showClimateRisk && (
@@ -162,6 +164,7 @@ function Chart() {
             connectNulls={true}
             legendType="none"
             strokeWidth={2}
+            animateNewValues={false}
           />
         )}
       </ComposedChart>
