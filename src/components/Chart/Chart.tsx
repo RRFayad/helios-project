@@ -1,9 +1,9 @@
 "use client";
 
 import { format } from "date-fns";
-import { getCocoaDataByPeriod } from "@/actions";
 import { PreparedDataForChart } from "@/types/data";
 import React, { useContext, useEffect, useState } from "react";
+import { getCocoaDataByPeriod } from "@/actions/get-data-by-period";
 import ChartContext, { ChartContextInterface } from "@/context/chart-context";
 
 import {

@@ -1,7 +1,7 @@
 "use server";
 
 import DUMMY_DATA from "@/lib/data.json";
-import { format, parseISO } from "date-fns";
+import { format, parseISO, subDays } from "date-fns";
 import { CommodityData, PreparedDataForChart } from "@/types/data";
 
 export const getCocoaDataByPeriod = async (
@@ -15,7 +15,7 @@ export const getCocoaDataByPeriod = async (
   });
 
   // const today = startOfToday();
-  const today = new Date(2024, 11, 13); // We are considering today is Dec 13th, to show dashed line chart
+  const today = new Date(2024, 11, 14); // We are considering today is Dec 14th, to show dashed line chart
 
   const chartData = [];
 
@@ -26,8 +26,8 @@ export const getCocoaDataByPeriod = async (
       const updatedItem = {
         commodity: item.commodity,
         date_on: format(itemDate, "yy-MMM-dd"),
-        wapr: itemDate <= today ? item.wapr : null,
-        predictedWapr: itemDate >= today ? item.wapr : null, // Forecasted Weighted Avg Percentual Risk
+        wapr: itemDate <= subDays(today, 1) ? item.wapr : null,
+        predictedWapr: itemDate >= subDays(today, 1) ? item.wapr : null, // Forecasted Weighted Avg Percentual Risk
         last: item.last,
         priceRangeMin: item.last
           ? (item.last * (Math.random() * (1 - 0.8) + 0.8)).toFixed(0) // As we mentioned in interview, I could generate this data
