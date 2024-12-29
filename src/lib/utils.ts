@@ -17,19 +17,24 @@ export const timeSelectorMonthReducer = (
 ): TimeSelectorState => {
   if (action.type === "SET_RANGE") {
     return {
-      initial: action.payload[0],
-      final: action.payload[1],
+      initial: action.payload.monthRange[0],
+      final: action.payload.monthRange[1],
       lastUpdatedBy: "slider",
     };
   }
-  if (
-    action.type === "SET_INITIAL_MONTH" &&
-    typeof action.payload === "number"
-  ) {
-    return { ...prevState, initial: action.payload, lastUpdatedBy: "select" };
+  if (action.type === "SET_INITIAL_MONTH") {
+    return {
+      ...prevState,
+      initial: action.payload.month,
+      lastUpdatedBy: action.payload.updatedBy,
+    };
   }
-  if (action.type === "SET_FINAL_MONTH" && typeof action.payload === "number") {
-    return { ...prevState, final: action.payload, lastUpdatedBy: "select" };
+  if (action.type === "SET_FINAL_MONTH") {
+    return {
+      ...prevState,
+      final: action.payload.month,
+      lastUpdatedBy: action.payload.updatedBy,
+    };
   } else {
     return prevState;
   }

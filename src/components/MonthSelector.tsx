@@ -19,7 +19,10 @@ function MonthSelector({ dispatch, monthsRangeState }: MonthSelectorProps) {
       <div className="flex w-full flex-col pt-2">
         <Select
           onValueChange={(value) =>
-            dispatch({ type: "SET_INITIAL_MONTH", payload: Number(value) })
+            dispatch({
+              type: "SET_INITIAL_MONTH",
+              payload: { month: Number(value), updatedBy: "select" },
+            })
           }
         >
           <span className="text-[12px] leading-4 text-[#444444S]">
@@ -46,7 +49,10 @@ function MonthSelector({ dispatch, monthsRangeState }: MonthSelectorProps) {
       <div className="flex w-full flex-col pt-2">
         <Select
           onValueChange={(value) => {
-            dispatch({ type: "SET_FINAL_MONTH", payload: Number(value) });
+            dispatch({
+              type: "SET_FINAL_MONTH",
+              payload: { month: Number(value), updatedBy: "select" },
+            });
           }}
         >
           <span className="text-[12px] leading-4 text-[#444444S]">
