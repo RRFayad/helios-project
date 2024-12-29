@@ -1,8 +1,18 @@
-function SidebarChartLegend() {
+interface SidebarChartLegendProps {
+  fullScreenChartMode?: boolean;
+}
+
+function SidebarChartLegend({
+  fullScreenChartMode = false,
+}: SidebarChartLegendProps) {
   return (
     <div className="flex w-full flex-col items-center gap-y-[8px] lg:items-start">
-      <h3 className="font-medium">Legend</h3>
-      <div className="flex flex-col gap-y-[8px]">
+      <h3 className={`font-medium ${fullScreenChartMode ? "hidden" : "block"}`}>
+        Legend
+      </h3>
+      <div
+        className={`flex gap-y-[8px] ${fullScreenChartMode ? "-mt-4 w-full flex-row items-center justify-around" : "flex-col"}`}
+      >
         <div className="flex items-center justify-start gap-x-2">
           <button className="h-3 w-3 bg-project-blue" />
           <span>Climate risk</span>

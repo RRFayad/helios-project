@@ -5,6 +5,17 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import Chart from "./Chart";
+import FullScreenChartModal from "./FullScreenChartModal";
 
 function Header() {
   return (
@@ -40,16 +51,8 @@ function Header() {
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger>
-              <Maximize2 size={16} color="#1c1c1c" />
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Expand View</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+
+        <FullScreenChartModal />
       </div>
     </div>
   );

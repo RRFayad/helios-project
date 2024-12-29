@@ -27,7 +27,7 @@ export const getCocoaDataByPeriod = async (
         commodity: item.commodity,
         date_on: format(itemDate, "yy-MMM-dd"),
         wapr: itemDate <= today ? item.wapr : null,
-        predictedWapr: itemDate > today ? item.wapr : null, // Forecasted Weighted Avg Percentual Risk
+        predictedWapr: itemDate >= today ? item.wapr : null, // Forecasted Weighted Avg Percentual Risk
         last: item.last,
         priceRangeMin: item.last
           ? (item.last * (Math.random() * (1 - 0.8) + 0.8)).toFixed(0) // As we mentioned in interview, I could generate this data
