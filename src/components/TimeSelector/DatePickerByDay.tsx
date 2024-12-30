@@ -50,7 +50,7 @@ function DatePickerByDay({ dispatch }: MonthSelectorProps) {
         </label>
         <Popover>
           <PopoverTrigger asChild>
-            <button className="mt-1 flex h-[32px] w-[179px] items-center justify-between rounded-md border border-[#C9C9C9] bg-[#F3F3F3] px-3 py-2 text-sm leading-4 shadow-sm">
+            <button className="mt-1 flex h-[32px] w-[130px] items-center justify-between rounded-md border border-[#C9C9C9] bg-[#F3F3F3] px-3 py-2 text-sm leading-4 shadow-sm xl:w-[179px]">
               <span>{format(startDate, "MMM dd, yyyy")}</span>
               <ChevronDown size={14} color="gray" />
             </button>
@@ -74,7 +74,7 @@ function DatePickerByDay({ dispatch }: MonthSelectorProps) {
         <label className="text-[12px] leading-4 text-[#444444]">End Date</label>
         <Popover>
           <PopoverTrigger asChild>
-            <button className="flex h-[32px] w-[179px] items-center justify-between rounded-md border border-[#C9C9C9] bg-[#F3F3F3] px-3 py-2 text-sm leading-4 shadow-sm">
+            <button className="mt-1 flex h-[32px] w-[130px] items-center justify-between rounded-md border border-[#C9C9C9] bg-[#F3F3F3] px-3 py-2 text-sm leading-4 shadow-sm xl:w-[179px]">
               <span>{format(endDate, "MMM dd, yyyy")}</span>
               <ChevronDown size={14} color="gray" />
             </button>
