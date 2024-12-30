@@ -21,7 +21,7 @@ const DualRangeSlider = React.forwardRef<
 
   return (
     <div
-      className={`flex flex-col items-center justify-center pt-6 ${className} mx-auto`}
+      className={`flex w-full flex-col items-center justify-center md:w-[90%] md:pt-6 ${className} mx-auto`}
     >
       <SliderPrimitive.Root
         ref={ref}
@@ -55,7 +55,7 @@ const DualRangeSlider = React.forwardRef<
       </SliderPrimitive.Root>
 
       <div
-        className={`relative mt-2 flex w-full justify-between text-xs text-gray-500 ${className}`}
+        className={`relative mt-2 flex w-full justify-around text-xs text-gray-500 lg:justify-between ${className}`}
       >
         {[
           "Jan",

@@ -9,7 +9,7 @@ function ChartContainer() {
           Weighted Avg price per kg
         </div>
         <div className="flex h-full w-full flex-col items-center justify-center">
-          <div className="h-[301px] w-full">
+          <div className="h-[301px] w-[110vw] md:w-full">
             <Chart />
           </div>
         </div>

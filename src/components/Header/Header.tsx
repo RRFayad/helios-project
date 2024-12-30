@@ -4,11 +4,11 @@ import FullScreenChartModal from "./FullScreenChartModal";
 
 function Header() {
   return (
-    <div className="flex h-8 items-center justify-between px-8">
-      <h1 className="text-base font-semibold">
+    <div className="flex h-8 items-center justify-between px-8 md:flex-row">
+      <h1 className="text-center text-base font-semibold">
         Global Price of Cocoa Beans (per kg)
       </h1>
-      <div className="flex items-center justify-center gap-x-4">
+      <div className="hidden items-center justify-center gap-x-4 md:flex">
         <InfoTooltip />
         <ExportDataBtn />
         <FullScreenChartModal />
