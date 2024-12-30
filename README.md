@@ -4,6 +4,7 @@ This project is a client-side application designed to show users data and graphs
 
 ## Links
 
+[Demo Video](https://www.loom.com/share/6bd2951bffa9448b8ab3b2e0a6b75e49)  
 [Helios Project](https://helios-project-rf.vercel.app/)  
 [Helios Original Design](https://www.figma.com/design/9b0hT6q2ViTmxnS6E4ABNG/Technical-Test---Front-end?node-id=0-1&p=f&t=x0vuL7SGDSQusUdT-0)
 
@@ -15,7 +16,7 @@ This project is a client-side application designed to show users data and graphs
 2. Navigate to the project directory  
    `cd helios-task`
 
-3. Install dependencies (using `--force` may help resolve dependency issues with the latest versions of Next.js and React):  
+3. Install dependencies (using `--force` may help resolve dependency issues related to conflicts between React Day Picker, the latest version of date-fns, and React 19):  
    `npm i --force`
 
 4. Start the Development Server  
@@ -140,7 +141,8 @@ Type definition files.
 4. Date Selectors:
 
 - Initially, I implemented a month selector based on my interpretation of the product requirements;
-- However, to avoid redundancy with the month slider, I replaced it with a date picker calendar;
+- However, to allow the user to able to select specific dates, I replaced it with a date picker calendar;
+  - (**Check from 1'06" of the demo video to compare both selectors**)
 - ** To switch back to the original month selector:**
   - Open [TimeSelector file](/src/components/TimeSelector/TimeSelector.tsx);
   - Comment out the `DatePickerByDay` Component(line 59 in my case): `<DatePickerByDay dispatch={dispatch} />`;
